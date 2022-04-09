@@ -37,7 +37,7 @@ module.exports = {
   },
   settings: {
     react: {
-      version: 'latest',
+      version: '999.999.999',
     },
   },
 };
