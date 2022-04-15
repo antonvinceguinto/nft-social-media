@@ -1,8 +1,7 @@
 import React from 'react';
-import type { NextPage } from 'next';
 import Head from 'next/head';
 
-const Home: NextPage = function homePage() {
+function Home() {
   return (
     <div>
       <Head>
@@ -18,7 +17,8 @@ const Home: NextPage = function homePage() {
         </h1>
         <h1 className='text-xl mt-1'>To get started, run, npm install</h1>
         <h1 className='mt-2'>
-          Template by{' '}
+          Template by
+          {' '}
           <span>
             <a
               href='http://antonguinto.com'
@@ -33,6 +33,6 @@ const Home: NextPage = function homePage() {
       </main>
     </div>
   );
-};
+}
 
 export default Home;
