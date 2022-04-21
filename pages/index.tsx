@@ -17,8 +17,7 @@ function Home() {
         </h1>
         <h1 className='text-xl mt-1'>To get started, run, npm install</h1>
         <h1 className='mt-2'>
-          Template by
-          {' '}
+          Template by{' '}
           <span>
             <a
               href='http://antonguinto.com'

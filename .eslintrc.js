@@ -3,7 +3,7 @@ module.exports = {
     browser: true,
     es2021: true,
   },
-  extends: ['plugin:@next/next/recommended', 'airbnb', 'airbnb-typescript'],
+  extends: ['plugin:@next/next/recommended', 'airbnb', 'airbnb-typescript', 'next', 'prettier'],
   parser: '@typescript-eslint/parser',
   parserOptions: {
     project: './tsconfig.json',
