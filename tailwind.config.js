@@ -7,6 +7,7 @@ module.exports = {
     extend: {
       fontFamily: {
         roboto: ['"Roboto"', 'sans-serif'],
+        abeezee: ['"ABeeZee"', 'sans-serif'],
       },
     },
   },

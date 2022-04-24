@@ -3,6 +3,13 @@
 
 echo '🏗️👷 Styling, testing and building your project before committing'
 
+# Format using Prettier write
+npm run format ||
+(
+    echo 'Error Formatting with Prettier';
+    false;
+)
+
 # Check Prettier standards
 npm run check-format ||
 (

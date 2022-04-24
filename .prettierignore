@@ -6,6 +6,7 @@ package-lock.json
 public
 .vscode
 README.md
+tsconfig.json
 .eslintrc.js
 next.config.js
 postcss.config.js
