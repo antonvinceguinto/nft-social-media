@@ -12,15 +12,17 @@ function PostContainer({ imgUrl }: { imgUrl: string }) {
   return (
     <div className='py-5 px-3 flex flex-col rounded-3xl drop-shadow-lg bg-white'>
       <div className='flex mb-5 px-5'>
-        <Image
-          src='https://randomuser.me/api/portraits/women/12.jpg'
-          alt='avatar'
-          width={54}
-          height={54}
-          layout='fixed'
-          className='rounded-full'
-        />
-        <div className='flex justify-between w-full items-center'>
+        <div className='flex items-center'>
+          <Image
+            src='https://randomuser.me/api/portraits/women/12.jpg'
+            alt='avatar'
+            width={54}
+            height={54}
+            layout='fixed'
+            className='rounded-full'
+          />
+        </div>
+        <div className='flex justify-between items-center w-full'>
           <div className='flex flex-col items-start pl-4'>
             <div className='font-bold text-lg m-0'>Anton Guinto</div>
             <div className='text-sm text-gray-500'>@antonguinto</div>
