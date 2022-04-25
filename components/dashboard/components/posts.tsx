@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
+import truncateText from '../../../utils/helpers';
 
-function PostContainer({ imgUrl }: { imgUrl: string }) {
+function PostContainer({ imgUrl = '' }: { imgUrl: string }) {
   const [isLiked, setIsLiked] = useState(false);
   const [isSponsored] = useState(false);
 
@@ -30,19 +31,22 @@ function PostContainer({ imgUrl }: { imgUrl: string }) {
           <div className='text-gray-500'>1hr ago</div>
         </div>
       </div>
-
-      <div className='flex items-center justify-center w-full h-[30rem] relative'>
-        <Image
-          priority
-          src={imgUrl}
-          alt='avatar'
-          layout='fill'
-          objectFit='cover'
-          blurDataURL={imgUrl}
-          placeholder='blur'
-          className='rounded-3xl bg-slate-50'
-        />
-      </div>
+      {imgUrl !== '' ? (
+        <div className='items-center justify-center w-full h-[20rem] relative'>
+          <Image
+            priority
+            src={imgUrl}
+            alt='avatar'
+            layout='fill'
+            objectFit='cover'
+            blurDataURL={imgUrl}
+            placeholder='blur'
+            className='rounded-3xl bg-slate-50'
+          />
+        </div>
+      ) : (
+        <div />
+      )}
       <div className='flex flex-col px-4 pt-4'>
         <div className='flex items-center'>
           <button
@@ -64,9 +68,10 @@ function PostContainer({ imgUrl }: { imgUrl: string }) {
           </div>
         </div>
         <div className='pt-2'>
-          ❝ Minting is now open. Proceed to the link given please give us 5-star
-          rating. Thank you! Minting is now open. Proceed to the link given
-          please give us 5-star rating.
+          ❝{' '}
+          {truncateText(
+            'Minting is now open. Proceed to the link given please give us 5-star rating. Thank you! Minting is now open. Proceed to the link given please give us 5-star rating.'
+          )}
         </div>
         <div className='pt-2 text-gray-500 font-bold text-sm'>
           Wed, April 24 2022
@@ -87,8 +92,9 @@ function PostContainer({ imgUrl }: { imgUrl: string }) {
 
 function PostItem() {
   return (
-    <div className='grid md:grid-cols-2 2xl:grid-cols-3 md:flex-row flex-wrap px-4 md:px-16 mt-10 gap-10'>
+    <div className='grid lg:grid-cols-2 xl:grid-cols-3 2xl:grid-cols-4 md:flex-row flex-wrap px-4 md:px-16 mt-10 gap-10'>
       <PostContainer imgUrl='https://images.wsj.net/im-472927?width=1920' />
+      <PostContainer imgUrl='' />
       <PostContainer imgUrl='https://techcrunch.com/wp-content/uploads/2021/12/FC3_itGXEAA6z5g.jpg?w=730&crop=1' />
       <PostContainer imgUrl='https://larvalabs.com/cryptopunks/cryptopunk5116.png' />
     </div>

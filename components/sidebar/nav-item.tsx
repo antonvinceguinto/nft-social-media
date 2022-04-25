@@ -1,5 +1,6 @@
 import React, { useContext } from 'react';
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 import { NavigationContext } from '../../services/contexts/navigation-context';
 import { NavigationProps, NavItemProps } from '../../utils/types';
 
@@ -26,26 +27,28 @@ function NavItem({ label, onClick }: NavItemProps) {
   if (currentIndex === 6) currNavLabel = 'Settings';
 
   return (
-    <button
-      type='button'
+    <motion.button
+      whileTap={{ scale: 0.9 }}
       className={`${
-        currNavLabel === label ? 'text-blue-500' : 'text-gray-400'
+        currNavLabel === label ? 'text-blue-500 font-bold' : 'text-gray-400'
       } px-4 py-3 cursor-pointer w-full rounded-lg hover:bg-blue-100 hover:bg-opacity-70`}
       onClick={onClick}
     >
-      <div className='flex items-center'>
-        <div className='p-1 items-center flex mr-0 md:mr-5'>
-          <Image
-            src={imageUrl}
-            alt={currNavLabel}
-            width={15}
-            height={15}
-            layout='fixed'
-          />
+      <div>
+        <div className='flex items-center'>
+          <div className='p-1 items-center flex mr-0 md:mr-5'>
+            <Image
+              src={imageUrl}
+              alt={currNavLabel}
+              width={15}
+              height={15}
+              layout='fixed'
+            />
+          </div>
+          <div>{label}</div>
         </div>
-        <div>{label}</div>
       </div>
-    </button>
+    </motion.button>
   );
 }
 
