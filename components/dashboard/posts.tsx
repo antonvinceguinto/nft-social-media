@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Image from 'next/image';
-import truncateText from '../../../utils/helpers';
+import truncateText from '../../utils/helpers';
 
 function PostContainer({ imgUrl = '' }: { imgUrl: string }) {
   const [isLiked, setIsLiked] = useState(false);

@@ -1,7 +1,6 @@
 import React from 'react';
 import Head from 'next/head';
-import Dashboard from '../components/dashboard';
-import Sidebar from '../components/sidebar';
+import Dashboard from './dashboard';
 
 function Home() {
   return (
@@ -12,11 +11,8 @@ function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
 
-      <main className='flex h-screen'>
-        <div className='flex flex-col relative md:flex-row md:overflow-hidden'>
-          <Sidebar />
-          <Dashboard />
-        </div>
+      <main>
+        <Dashboard />
       </main>
     </div>
   );

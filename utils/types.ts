@@ -10,6 +10,8 @@ export type NavLabel =
 export interface NavigationProps {
   currentIndex: number;
   setCurrentIndex: React.Dispatch<React.SetStateAction<number>>;
+  isBurgerOpen: boolean;
+  setIsBurgerOpen: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
 export interface NavItemProps {

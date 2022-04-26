@@ -34,19 +34,17 @@ function NavItem({ label, onClick }: NavItemProps) {
       } px-4 py-3 cursor-pointer w-full rounded-lg hover:bg-blue-100 hover:bg-opacity-70`}
       onClick={onClick}
     >
-      <div>
-        <div className='flex items-center'>
-          <div className='p-1 items-center flex mr-0 md:mr-5'>
-            <Image
-              src={imageUrl}
-              alt={currNavLabel}
-              width={15}
-              height={15}
-              layout='fixed'
-            />
-          </div>
-          <div>{label}</div>
+      <div className='flex items-center'>
+        <div className='p-1 items-center flex mr-0 md:mr-5'>
+          <Image
+            src={imageUrl}
+            alt={currNavLabel}
+            width={15}
+            height={15}
+            layout='fixed'
+          />
         </div>
+        <div className='pl-2'>{label}</div>
       </div>
     </motion.button>
   );
