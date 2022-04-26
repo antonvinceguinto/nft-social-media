@@ -19,16 +19,17 @@ function Sidebar() {
       <div className='m-auto justify-center items-center md:flex md:flex-col mb-0 md:mb-10 mt-0 md:mt-5 cursor-pointer'>
         <div className='flex'>
           <Image
+            priority
             src='/assets/images/logo.png'
-            alt='avatar'
+            alt='logo'
             width={size}
             height={size}
             layout='fixed'
             className='pointer-events-none cursor-pointer'
           />
         </div>
-        <div className='text-2xl mt-0 md:mt-1 font-bold hidden md:flex'>
-          Bullish PH
+        <div className='text-2xl mt-0 md:mt-1 font-extrabold hidden md:flex font-sans'>
+          BullishPH
         </div>
       </div>
     </Link>
@@ -46,12 +47,16 @@ function Sidebar() {
         } flex flex-col gap-4`}
       >
         <Link href='/dashboard' passHref>
-          <NavItem label='Dashboard' onClick={() => navItemHandler(1)} />
+          <div>
+            <NavItem label='Dashboard' onClick={() => navItemHandler(1)} />
+          </div>
         </Link>
         <NavItem label='Popular' onClick={() => navItemHandler(2)} />
         <NavItem label='Discover' onClick={() => navItemHandler(3)} />
         <Link href='/news' passHref>
-          <NavItem label='News' onClick={() => navItemHandler(4)} />
+          <div>
+            <NavItem label='News' onClick={() => navItemHandler(4)} />
+          </div>
         </Link>
         <div className='hidden md:visible' />
         <NavItem label='Profile' onClick={() => navItemHandler(5)} />
@@ -62,8 +67,8 @@ function Sidebar() {
 
   return (
     <aside
-      className='py-3 flex-col items-center bg-white drop-shadow-lg
-	  w-screen md:max-w-[15rem] h-auto md:min-h-screen sticky md:left-0 md:overflow-auto'
+      className='py-3 flex-col items-center bg-white shadow-lg
+	  w-screen md:max-w-[15rem] md:min-h-screen sticky top-0 z-10 md:left-0 md:overflow-auto'
     >
       <div className='hidden md:flex'>{logo()}</div>
       <div className='md:flex px-1 md:px-0 items-center md:justify-center md:overflow-auto'>

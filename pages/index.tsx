@@ -1,8 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Head from 'next/head';
+import TimeAgo from 'javascript-time-ago';
 import Dashboard from './dashboard';
 
 function Home() {
+  useEffect(() => {
+    TimeAgo.setDefaultLocale('en');
+
+    return () => {};
+  }, []);
+
   return (
     <div>
       <Head>

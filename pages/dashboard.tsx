@@ -9,7 +9,7 @@ function Dashboard() {
         {/* <LatestNftProjects /> */}
         {/* <PostItem /> */}
         <div className='flex items-center md:h-screen justify-center text-3xl md:text-4xl'>
-          🚧 Under development
+          <div>🚧 Under development</div>
         </div>
       </div>
     </ParentLayout>
