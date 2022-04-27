@@ -76,7 +76,7 @@ function News({ techRes, busRes }: { techRes: Headlines; busRes: Headlines }) {
 
   return (
     <ParentLayout>
-      <div className='p-5 md:p-10 flex flex-col overflow-x-hidden md:overflow-auto'>
+      <div className='p-5 md:p-10 flex flex-col w-full'>
         <HeadlineItem article={articles[0]} />
         <div className='font-bold text-3xl md:text-4xl mt-8 mb-2'>
           Tech News

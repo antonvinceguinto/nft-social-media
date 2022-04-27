@@ -68,7 +68,7 @@ function Sidebar() {
   return (
     <aside
       className='py-3 flex-col items-center bg-white shadow-lg
-	  w-screen md:max-w-[15rem] md:min-h-screen sticky top-0 z-10 md:left-0 md:overflow-auto'
+	  w-screen md:w-[15rem] md:min-h-screen md:overflow-hidden'
     >
       <div className='hidden md:flex'>{logo()}</div>
       <div className='md:flex px-1 md:px-0 items-center md:justify-center md:overflow-auto'>
