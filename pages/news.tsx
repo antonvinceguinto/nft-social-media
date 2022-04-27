@@ -29,7 +29,7 @@ function NewsItem({ article }: { article: Article }) {
 
   return (
     <div className='p-2 mt-2 hover:underline flex border-b-2'>
-      <div className='flex flex-col'>
+      <div className='flex flex-col truncate whitespace-pre-wrap'>
         <div className='text-blue-500 font-bold text-sm'>{article.author}</div>
         <a href={article.url} target='_blank' rel='noreferrer'>
           <div className='font-bold text-lg'>{article.title}</div>
