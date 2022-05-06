@@ -57,6 +57,7 @@ function HeadlineItem({ article }: { article: Article }) {
             alt='Article image'
             layout='fill'
             objectFit='cover'
+            className='rounded hover:'
           />
         </div>
         <div className='flex flex-col justify-center md:pl-4 pt-2 lg:col-span-2'>
@@ -71,9 +72,7 @@ function HeadlineItem({ article }: { article: Article }) {
   );
 }
 
-function News({ techRes, busRes }: { techRes: Headlines; busRes: Headlines }) {
-  const { articles } = techRes;
-
+function News({ articles }: { articles: Article[] }) {
   return (
     <ParentLayout>
       <div className='p-5 md:p-10 flex flex-col w-full'>
@@ -84,14 +83,6 @@ function News({ techRes, busRes }: { techRes: Headlines; busRes: Headlines }) {
         <div className='flex-col grid md:grid-cols-2 lg:grid-cols-3'>
           {articles.slice(1, articles.length).map((article) => (
             <NewsItem key={article.title} article={article} />
-          ))}
-        </div>
-        <div className='font-bold text-3xl md:text-4xl mt-8 mb-2'>
-          Business News
-        </div>
-        <div className='flex-col grid md:grid-cols-2 lg:grid-cols-3'>
-          {busRes.articles.map((businessArticle) => (
-            <NewsItem key={businessArticle.title} article={businessArticle} />
           ))}
         </div>
         <footer className='flex mt-10 items-center justify-center text-sm text-gray-500'>
@@ -110,10 +101,12 @@ export async function getServerSideProps() {
     `https://newsapi.org/v2/top-headlines?country=ph&category=business&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
   );
 
-  const techRes: Headlines = await techologyRes.json();
-  const busRes: Headlines = await businessRes.json();
+  const techResults: Headlines = await techologyRes.json();
+  const busResults: Headlines = await businessRes.json();
 
-  return { props: { techRes, busRes } };
+  const articles: Article[] = [...techResults.articles, ...busResults.articles];
+
+  return { props: { articles } };
 }
 
 export default News;

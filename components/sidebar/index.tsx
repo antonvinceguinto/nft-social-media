@@ -1,4 +1,5 @@
 import React, { useContext } from 'react';
+import { useRouter } from 'next/router';
 import Image from 'next/image';
 import Link from 'next/link';
 import { NavigationContext } from '../../services/contexts/navigation-context';
@@ -9,9 +10,23 @@ function Sidebar() {
   const { setCurrentIndex, isBurgerOpen, setIsBurgerOpen } =
     useContext<NavigationProps>(NavigationContext);
 
+  const router = useRouter();
+
   const navItemHandler = (index: number) => {
     setCurrentIndex(index);
     setIsBurgerOpen(false);
+
+    switch (index) {
+      case 1:
+        router.push('/dashboard');
+        break;
+      case 4:
+        router.push('/news');
+        break;
+      default:
+        router.push('/dashboard');
+        break;
+    }
   };
 
   const logo = (size: number = 68) => (
@@ -46,18 +61,10 @@ function Sidebar() {
           isBurgerOpen ? 'visible' : 'hidden md:flex'
         } flex flex-col gap-4`}
       >
-        <Link href='/dashboard' passHref>
-          <div>
-            <NavItem label='Dashboard' onClick={() => navItemHandler(1)} />
-          </div>
-        </Link>
+        <NavItem label='Dashboard' onClick={() => navItemHandler(1)} />
         <NavItem label='Popular' onClick={() => navItemHandler(2)} />
         <NavItem label='Discover' onClick={() => navItemHandler(3)} />
-        <Link href='/news' passHref>
-          <div>
-            <NavItem label='News' onClick={() => navItemHandler(4)} />
-          </div>
-        </Link>
+        <NavItem label='News' onClick={() => navItemHandler(4)} />
         <div className='hidden md:visible' />
         <NavItem label='Profile' onClick={() => navItemHandler(5)} />
         <NavItem label='Settings' onClick={() => navItemHandler(6)} />
