@@ -75,30 +75,46 @@ function HeadlineItem({ article }: { article: Article }) {
 function News({ articles }: { articles: Article[] }) {
   return (
     <ParentLayout>
-      <div className='p-5 md:p-10 flex flex-col w-full'>
-        <HeadlineItem article={articles[0]} />
-        <div className='font-bold text-3xl md:text-4xl mt-8 mb-2'>
-          Tech News
+      {!articles ? (
+        <>Loading...</>
+      ) : (
+        <div className='p-5 md:p-10 flex flex-col w-full'>
+          <HeadlineItem article={articles[0]} />
+          <div className='font-bold text-3xl md:text-4xl mt-8 mb-2'>
+            Tech News
+          </div>
+          <div className='flex-col grid md:grid-cols-2 lg:grid-cols-3'>
+            {articles.slice(1, articles.length).map((article) => (
+              <NewsItem key={article.title} article={article} />
+            ))}
+          </div>
+          <footer className='flex mt-10 items-center justify-center text-sm text-gray-500'>
+            Powered by NewsAPI
+          </footer>
         </div>
-        <div className='flex-col grid md:grid-cols-2 lg:grid-cols-3'>
-          {articles.slice(1, articles.length).map((article) => (
-            <NewsItem key={article.title} article={article} />
-          ))}
-        </div>
-        <footer className='flex mt-10 items-center justify-center text-sm text-gray-500'>
-          Powered by NewsAPI
-        </footer>
-      </div>
+      )}
     </ParentLayout>
   );
 }
 
 export async function getServerSideProps() {
+  const authorization = `Bearer ${process.env.NEXT_PUBLIC_NEWS_API_KEY}`;
+
   const techologyRes = await fetch(
-    `https://newsapi.org/v2/top-headlines?sources=techcrunch&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
+    `https://newsapi.org/v2/top-headlines?sources=techcrunch`,
+    {
+      headers: {
+        Authorization: authorization,
+      },
+    }
   );
   const businessRes = await fetch(
-    `https://newsapi.org/v2/top-headlines?country=ph&category=business&apiKey=${process.env.NEXT_PUBLIC_NEWS_API_KEY}`
+    `https://newsapi.org/v2/top-headlines?country=ph&category=business`,
+    {
+      headers: {
+        Authorization: authorization,
+      },
+    }
   );
 
   const techResults: Headlines = await techologyRes.json();
